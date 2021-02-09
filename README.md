@@ -1,4 +1,4 @@
-[![JitPack](https://jitpack.io/v/AbedElazizShe/LightCompressor.svg)](https://jitpack.io/#AbedElazizShe/LightCompressor)
+[![JitPack](https://jitpack.io/v/tengyeekong/LightCompressor.svg)](https://jitpack.io/#tengyeekong/LightCompressor)
 
 
 # LightCompressor
