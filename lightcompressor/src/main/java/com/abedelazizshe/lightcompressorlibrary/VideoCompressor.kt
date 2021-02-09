@@ -38,6 +38,7 @@ object VideoCompressor : CoroutineScope by MainScope() {
         quality: VideoQuality = VideoQuality.MEDIUM,
         isMinBitRateEnabled: Boolean = true,
         keepOriginalResolution: Boolean = false,
+        maxResolution: Int = 0,
     ) {
         job = doVideoCompression(
             srcPath,
@@ -45,6 +46,7 @@ object VideoCompressor : CoroutineScope by MainScope() {
             quality,
             isMinBitRateEnabled,
             keepOriginalResolution,
+            maxResolution,
             listener,
         )
     }
@@ -64,6 +66,7 @@ object VideoCompressor : CoroutineScope by MainScope() {
         quality: VideoQuality,
         isMinBitRateEnabled: Boolean,
         keepOriginalResolution: Boolean,
+        maxResolution: Int,
         listener: CompressionListener,
     ) = launch {
         isRunning = true
@@ -74,6 +77,7 @@ object VideoCompressor : CoroutineScope by MainScope() {
             quality,
             isMinBitRateEnabled,
             keepOriginalResolution,
+            maxResolution,
             listener,
         )
 
@@ -92,6 +96,7 @@ object VideoCompressor : CoroutineScope by MainScope() {
         quality: VideoQuality,
         isMinBitRateEnabled: Boolean,
         keepOriginalResolution: Boolean,
+        maxResolution: Int,
         listener: CompressionListener,
     ): Result = withContext(Dispatchers.IO) {
         return@withContext compressVideo(
@@ -100,6 +105,7 @@ object VideoCompressor : CoroutineScope by MainScope() {
             quality,
             isMinBitRateEnabled,
             keepOriginalResolution,
+            maxResolution,
             object : CompressionProgressListener {
                 override fun onProgressChanged(percent: Float) {
                     listener.onProgress(percent)
